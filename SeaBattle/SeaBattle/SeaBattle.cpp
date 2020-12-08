@@ -2,6 +2,7 @@
 #include <SFML/Window.hpp>
 #include <SFML/System.hpp>
 #include <iostream>
+#include "Control.h"
 using namespace std;
 using namespace sf;
 
@@ -93,7 +94,7 @@ int main()
 	endg.setFillColor(Color::Red); // победа / проигрыш 
 	endg.setOutlineColor(Color::Red);
 	string put_in = "";
-	Need_More_Control NMC;
+	Control NMC;
 	while (window.isOpen()) {
 		Event event;
 		while (window.pollEvent(event)) {

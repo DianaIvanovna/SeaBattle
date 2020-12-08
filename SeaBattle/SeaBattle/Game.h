@@ -1,4 +1,7 @@
 #define _WINSOCK_DEPRECATED_NO_WARNINGS
+#define _WINSOCK_DEPRECATED_NO_WARNINGS
+#pragma comment(lib, "ws2_32.lib")
+#include <winsock2.h>
 #include <iostream>
 
 using namespace std;
@@ -16,11 +19,14 @@ class Game
 	char table_enemy[10][10];
 	int yach;
 	char win;
+	WSAData wsaData;
+	WORD DLLVersion;
+	SOCKADDR_IN addr;
+	SOCKET newConnection;
 
 public:
 	Game();
 	~Game() {};
-	void game();
 	char get_win() {
 		return win;
 	}
@@ -36,8 +42,8 @@ public:
 	void print2();//для отладки в консоли
 	void reDraw();//для отладки в консоли
 	void reset(int i, int j);
-	//char attack(int i, int j);
-	//char prov();
+	char attack(int i, int j);
+	char prov();
 	bool set_ship_pos(int i, int j, bool flag_ap);
 
 	char get_table(int i, int j) {
